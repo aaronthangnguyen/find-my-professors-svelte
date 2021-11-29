@@ -33,7 +33,7 @@
         return schoolArr
     }
 
-    async function fetchRatings(school: string, courseCode: string) {
+    async function fetchRatings(school: String, courseCode: String) {
         const response = await fetch('http://localhost:8080/graphql', {
                 method: 'POST',
                 headers: {
@@ -45,7 +45,7 @@
                         "  querySchool (filter: {name: {allofterms: $school}}) {\n" +
                         "    name\n" +
                         "    courses (filter: {code:{eq: $code}}) {\n" +
-                        "      professors (first:10, order: {desc: rating}) {\n" +
+                        "      professors (first:30, order: {desc: rating}) {\n" +
                         "        name\n" +
                         "        rating\n" +
                         "        totalRatings\n" +
@@ -110,7 +110,7 @@
     let ratings;
 
     function handleLookup() {
-        ratings = fetchRatings("Valencia College", "ENC1101");
+        ratings = fetchRatings(selectedSchool.name, selectedCourse.code);
     }
 
     const columns = [
