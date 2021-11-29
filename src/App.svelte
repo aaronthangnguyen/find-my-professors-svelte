@@ -3,7 +3,7 @@
     import SvelteTable from "svelte-table";
     import {onMount} from "svelte";
 
-    const rows = [];
+    let rows = [];
 
     let schools = [];
     let courses = [];
@@ -64,9 +64,14 @@
         console.log(json)
         const querySchool = json.data.querySchool;
         const professors = querySchool[0].courses[0].professors;
+        rows = []
         for (let i in professors) {
             const professor = professors[i];
-            professor.rating = (professor.rating / professor.totalRatings).toFixed(2)
+            if (professor.totalRatings == 0) {
+                professor.rating = 0.00
+            } else {
+                professor.rating = (professor.rating / professor.totalRatings).toFixed(2)
+            }
             console.log(professor)
             rows[i] = professor
         }
