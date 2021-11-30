@@ -10,8 +10,11 @@
     let selectedSchool;
     let selectedCourse;
 
+    // noinspection TypeScriptUnresolvedVariable
+    const backendAddress = BACKEND_ADDRESS
+
     async function getSchools(): Promise<Array<String>> {
-        const response = await fetch('http://localhost:8080/graphql', {
+        const response = await fetch(backendAddress, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -34,7 +37,7 @@
     }
 
     async function fetchRatings(school: String, courseCode: String) {
-        const response = await fetch('http://localhost:8080/graphql', {
+        const response = await fetch(backendAddress, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -78,7 +81,7 @@
     }
 
     async function fetchCourses() {
-        const response = await fetch('http://localhost:8080/graphql', {
+        const response = await fetch(backendAddress, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
