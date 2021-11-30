@@ -4,8 +4,6 @@ WORKDIR /app
 
 COPY rollup.config.js ./
 COPY package*.json ./
-COPY .env ./
-RUN source .env
 
 RUN npm install
 
