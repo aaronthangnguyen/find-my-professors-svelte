@@ -178,8 +178,9 @@
         margin: 0 auto;
     }
 
-
-
+    select {
+        min-width: 7.5%;
+    }
 
     h1 {
         color: #ff3e00;
