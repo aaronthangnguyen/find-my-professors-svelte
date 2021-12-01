@@ -146,7 +146,7 @@
 </script>
 
 <main>
-    <div class="center">
+    <div>
         <Box>
             <h1>Find My Professors</h1>
             <hr>
