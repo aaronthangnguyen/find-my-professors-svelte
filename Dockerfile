@@ -2,12 +2,10 @@ FROM node:16-alpine AS build
 
 WORKDIR /app
 
-COPY rollup.config.js ./
-COPY package*.json ./
-
+COPY . ./
 RUN npm install
+RUN npm run build
 
-COPY ./src ./src
-COPY ./public ./public
+EXPOSE 5000
 
-CMD ["npm" ,"start"]
+CMD ["npm", "start"]

@@ -11,7 +11,8 @@
     let selectedCourse;
 
     // noinspection TypeScriptUnresolvedVariable
-    const backendAddress = BACKEND_ADDRESS
+    const backendAddress = "https://findmyprofessors.warrensnipes.dev/graphql"
+    console.log(backendAddress)
 
     async function getSchools(): Promise<Array<String>> {
         const response = await fetch(backendAddress, {
