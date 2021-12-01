@@ -10,4 +10,6 @@ RUN npm install
 COPY ./src ./src
 COPY ./public ./public
 
+RUN npm build
+
 CMD ["npm" ,"start"]
