@@ -128,13 +128,13 @@
             key: "rating",
             title: "Rating",
             value: v => v.rating,
-            sortable: false,
+            sortable: true,
         },
         {
             key: "totalRatings",
             title: "Total Ratings",
             value: v => v.totalRatings,
-            sortable: false,
+            sortable: true,
         },
     ];
 
