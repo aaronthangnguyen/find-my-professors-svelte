@@ -1,5 +1,6 @@
 <script lang="ts">
     import Box from "./Box.svelte";
+    // noinspection TypeScriptCheckImport
     import SvelteTable from "svelte-table";
     import {onMount} from "svelte";
 
