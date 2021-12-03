@@ -12,7 +12,6 @@
 
     // noinspection TypeScriptUnresolvedVariable
     const backendAddress = "https://findmyprofessors.warrensnipes.dev/graphql"
-    console.log(backendAddress)
 
     async function getSchools(): Promise<Array<String>> {
         const response = await fetch(backendAddress, {
@@ -65,7 +64,6 @@
             }
         );
         const json = await response.json();
-        console.log(json)
         const querySchool = json.data.querySchool;
         const professors = querySchool[0].courses[0].professors;
         rows = []
@@ -151,7 +149,7 @@
             <h1>Find My Professors</h1>
             <hr>
             <select bind:value={selectedSchool}
-                    on:change="{() =>{ console.log(selectedSchool); fetchCourses(); return selectedSchool; }}">
+                    on:change="{() =>{ fetchCourses(); return selectedSchool; }}">
                 {#each schools as school}
                     <option value={school}>
                         {school.name}
@@ -159,7 +157,7 @@
                 {/each}
             </select>
             <select bind:value={selectedCourse}
-                    on:change="{() =>{ console.log(selectedCourse);  return selectedCourse; }}">
+                    on:change="{() =>{ return selectedCourse; }}">
                 {#each courses as course}
                     <option value={course}>
                         {course.code}
