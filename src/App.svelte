@@ -73,7 +73,7 @@
         }
     }
 
-    async function fetchCourses() {
+    async function fetchCourses(school: String) {
         const response = await fetch(backendAddress, {
                 method: 'POST',
                 headers: {
@@ -89,7 +89,7 @@
                         "            }\n" +
                         "        }",
                     variables: {
-                        "school": selectedSchool.name,
+                        "school": school,
                     }
                 })
             }
@@ -97,6 +97,7 @@
 
         const promise = await response.json();
         const courseData = promise.data.querySchool[0].courses;
+        courses = []
         for (let i in courseData) {
             courseData[i].id = i
             courses[i] = courseData[i]
@@ -143,7 +144,7 @@
             <h1>Find My Professors</h1>
             <hr>
             <select bind:value={selectedSchool}
-                    on:change="{() =>{ fetchCourses(); return selectedSchool; }}">
+                    on:change="{() =>{ fetchCourses(selectedSchool.name); return selectedSchool; }}">
                 {#each schools as school}
                     <option value={school}>
                         {school.name}
@@ -151,7 +152,7 @@
                 {/each}
             </select>
             <select bind:value={selectedCourse}
-                    on:change="{() =>{ return selectedCourse; }}">
+                    on:change="{() => selectedCourse}">
                 {#each courses as course}
                     <option value={course}>
                         {course.code}
