@@ -68,14 +68,7 @@
         const professors = querySchool[0].courses[0].professors;
         rows = []
         for (let i in professors) {
-            const professor = professors[i];
-            if (professor.totalRatings == 0) {
-                professor.rating = 0.00
-            } else {
-                professor.rating = (professor.rating / professor.totalRatings).toFixed(2)
-            }
-            console.log(professor)
-            rows[i] = professor
+            rows[i] = professors[i]
         }
     }
 
