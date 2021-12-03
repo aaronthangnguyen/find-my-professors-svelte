@@ -81,13 +81,14 @@
                     'Accept': 'application/json',
                 },
                 body: JSON.stringify({
-                    query: "query GetCourses($school: String) {\n" +
-                        "            querySchool(filter:{name: {allofterms: $school}}, order: {desc: name}) {\n" +
-                        "                courses (order: {asc: code}){\n" +
-                        "                    code\n" +
-                        "                }\n" +
-                        "            }\n" +
-                        "        }",
+                    //TODO: Figure out how to handle pagination
+                    query: `query GetCourses($school: String) {
+                                    querySchool(filter:{name: {allofterms: $school}}) {
+                                        courses (order: {asc: code}, first: 10000){
+                                            code
+                                        }
+                                    }
+                                }`,
                     variables: {
                         "school": school,
                     }
@@ -144,15 +145,14 @@
             <h1>Find My Professors</h1>
             <hr>
             <select bind:value={selectedSchool}
-                    on:change="{() =>{ fetchCourses(selectedSchool.name); return selectedSchool; }}">
+                    on:change={() =>{ fetchCourses(selectedSchool.name); return selectedSchool; }}>
                 {#each schools as school}
                     <option value={school}>
                         {school.name}
                     </option>
                 {/each}
             </select>
-            <select bind:value={selectedCourse}
-                    on:change="{() => selectedCourse}">
+            <select bind:value={selectedCourse} on:change={() => selectedCourse}>
                 {#each courses as course}
                     <option value={course}>
                         {course.code}
