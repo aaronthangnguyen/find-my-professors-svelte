@@ -1,51 +1,79 @@
 <script lang="ts">
+  import type Professor from "../types/professor";
+
   import Row from "./Row.svelte";
+
+  const professors: Professor[] = [
+    {
+      id: "2444827",
+      name: "Ian O'Toole",
+      rating: 4.4,
+      totalRatings: 14,
+      difficulty: 2.6,
+      wouldTakeAgain: 79,
+    },
+    {
+      id: "2174158",
+      name: "Jessica Anfinson",
+      rating: 3.9,
+      totalRatings: 28,
+      difficulty: 2.6,
+      wouldTakeAgain: 79,
+    },
+    {
+      id: "246654",
+      name: "Robin Simmons ",
+      rating: 4.3,
+      totalRatings: 142,
+      difficulty: 2.6,
+      wouldTakeAgain: 66,
+    },
+    {
+      id: "2570798",
+      name: "Ting Tang",
+      rating: 4.2,
+      totalRatings: 30,
+      difficulty: 2.6,
+      wouldTakeAgain: 90,
+    },
+    {
+      id: "312763",
+      name: "Dennis Hunchuck",
+      rating: 4.0,
+      totalRatings: 66,
+      difficulty: 2.6,
+      wouldTakeAgain: 74,
+    },
+  ];
 </script>
 
 <div>
-  <h2 class="title">Table - HUM 1020 - Introduction to Humanities</h2>
+  <h2 class="title">[Course Number] - [Course Name]</h2>
   <table class="table is-hoverable">
     <thead>
       <tr>
-        <th><abbr title="Position">Pos</abbr></th>
+        <th><abbr title="Professor ID">ID</abbr></th>
         <th>Name</th>
         <th>Rating</th>
-        <th>Total ratings</th>
-        <th><abbr title="Would take again?">Again?</abbr></th>
+        <th>Total Ratings</th>
+        <th>Difficulty</th>
+        <th><abbr title="Would Take Again?">Again?</abbr></th>
       </tr>
     </thead>
     <tfoot>
       <tr>
-        <th><abbr title="Position">Pos</abbr></th>
+        <th><abbr title="Professor ID">ID</abbr></th>
         <th>Name</th>
         <th>Rating</th>
-        <th>Total ratings</th>
-        <th><abbr title="Would take again?">Again?</abbr></th>
+        <th>Total Ratings</th>
+        <th>Difficulty</th>
+        <th><abbr title="Would Take Again?">Again?</abbr></th>
       </tr>
     </tfoot>
     <tbody>
-      <tr
-        ><th>1</th>
-        <td>Professor A</td>
-        <td>3.6</td>
-        <td>212</td>
-        <td>69%</td>
-      </tr>
-      <tr class="is-selected"
-        ><th>2</th>
-        <td>Professor B</td>
-        <td>3.6</td>
-        <td>212</td>
-        <td>59%</td>
-      </tr>
-      <tr
-        ><th>3</th>
-        <td>Professor C</td>
-        <td>4.0</td>
-        <td>212</td>
-        <td>100%</td>
-      </tr>
-      <Row />
+      {#each professors as professor}
+        <Row data={professor} />
+      {/each}
     </tbody>
   </table>
 </div>
@@ -53,8 +81,5 @@
 <style>
   table {
     width: 100%;
-  }
-  .table tr.is-selected {
-    background-color: rgb(83, 86, 231);
   }
 </style>
