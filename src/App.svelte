@@ -7,13 +7,7 @@
 
 <main>
   <div class="container is-container">
-    <h1 class="title py-6 has-text-centered">Find My Professors! 🎓</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus,
-      sapiente molestiae deleniti tenetur, expedita velit praesentium culpa ut,
-      reprehenderit tempore ipsum accusantium possimus laboriosam nihil
-      quibusdam maxime harum rem unde?
-    </p>
+    <h1 class="title pt-6 pb-5 has-text-centered">Find My Professors! 🎓</h1>
     <Control />
     <div class="columns is-variable is-6">
       <div class="column is-two-thirds">

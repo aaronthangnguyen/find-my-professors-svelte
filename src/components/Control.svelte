@@ -1,5 +1,4 @@
 <div class="mb-6">
-  <h2 class="title">Control</h2>
   <div class="is-flex is-justify-content-center	">
     <div class="select mr-4">
       <select>
