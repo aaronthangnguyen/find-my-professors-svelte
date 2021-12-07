@@ -1,25 +1,45 @@
+<script lang="ts">
+  import { onMount } from "svelte";
+  import { getAllAreas } from "../services/getAllAreas";
+  import { getAllCourses } from "../services/getAllCourses";
+  import { getAllSchools } from "../services/getAllSchools";
+  import { areas } from "../stores/areas";
+  import { courses } from "../stores/courses";
+
+  import { schools } from "../stores/schools";
+
+  onMount(async () => {
+    $schools = await getAllSchools();
+    $courses = await getAllCourses("Valencia College");
+    $areas = getAllAreas($courses);
+  });
+</script>
+
 <div class="mb-6">
   <div class="is-flex is-justify-content-center	">
     <div class="select mr-4">
-      <select>
+      <select id="school-select">
         <option disabled selected>School</option>
-        <option>Valencia College</option>
-        <option>University of Central Florida</option>
+        {#each $schools as school}
+          <option>{school.name}</option>
+        {/each}
       </select>
     </div>
     <div class="select mr-2">
-      <select>
+      <select id="area-select">
         <option disabled selected>Area</option>
-        <option>HUM</option>
-        <option>COP</option>
+        {#each $areas as area}
+          <option>{area}</option>
+        {/each}
       </select>
     </div>
 
     <div class="select mr-4">
-      <select>
-        <option disabled selected>Class</option>
-        <option>HUM 1020</option>
-        <option>COP 2800C</option>
+      <select id="course-select">
+        <option disabled selected>Course</option>
+        {#each $courses as course}
+          <option>{course.code}</option>
+        {/each}
       </select>
     </div>
     <button class="button has-text-white"> Search </button>
@@ -35,5 +55,14 @@
     background-color: rgb(83, 86, 231);
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+  #school-select {
+    width: 16rem;
+  }
+  #area-select {
+    width: 6rem;
+  }
+  #course-select {
+    width: 10rem;
   }
 </style>
